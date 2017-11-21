@@ -159,7 +159,17 @@ public class AddressBook extends JFrame {
     // method to launch program execution
     public static void main( String args[] )
     {
-        new AddressBook();
+        try {
+            // select Look and Feel
+//            UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
+            UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
+            // start application
+            new AddressBook();
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     // Private inner class defines action that enables
