@@ -158,35 +158,13 @@ public class CloudscapeDataAccess
             ResultSet resultSet = sqlFind.executeQuery();
 
             // if no records found, return immediately
-//            if ( !resultSet.next() )
-//                return null;
+            if ( !resultSet.next() )
+                return null;
 
-            // create new AddressBookEntry
-//            AddressBookEntry person = new AddressBookEntry();
-            int count = 0;
-            ArrayList<AddressBookEntry> arraylist = new ArrayList<AddressBookEntry>();
+            ArrayList<AddressBookEntry> arraylist = new ArrayList<>();
 
             while (resultSet.next()) {
                 AddressBookEntry person = new AddressBookEntry();
-//                person = new AddressBookEntry();
-//                // set AddressBookEntry properties
-//                person.setFirstName(resultSet.getString(2));
-//                person.setLastName(resultSet.getString(3));
-//
-//                person.setAddressID(resultSet.getInt(4));
-//                person.setAddress1(resultSet.getString(5));
-//                person.setAddress2(resultSet.getString(6));
-//                person.setCity(resultSet.getString(7));
-//                person.setState(resultSet.getString(8));
-//                person.setZipcode(resultSet.getString(9));
-//
-//                person.setPhoneID(resultSet.getInt(10));
-//                person.setPhoneNumber(resultSet.getString(11));
-//
-//                person.setEmailID(resultSet.getInt(12));
-//                person.setEmailAddress(resultSet.getString(13));
-
-//                person = new AddressBookEntry();
                 // set AddressBookEntry properties
                 person.setFirstName(resultSet.getString(2));
                 person.setLastName(resultSet.getString(3));
@@ -203,19 +181,9 @@ public class CloudscapeDataAccess
 
                 person.setEmailID(resultSet.getInt(12));
                 person.setEmailAddress(resultSet.getString(13));
-//                persons[count]=person;
-                count ++;
+
                 arraylist.add(person);
-
-//                return person;
             }
-
-            // return AddressBookEntry
-//            for (int i = 0; i <persons.length ; i++) {
-//
-//                System.out.printf("person = " + persons);
-//
-//            }
             return arraylist;
         }
 
