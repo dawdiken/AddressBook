@@ -164,7 +164,12 @@ public class AddressBook extends JFrame {
 //            UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
             UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
             // start application
-            new AddressBook();
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    new AddressBook();
+                }
+            });
+//            new AddressBook();
         }
         catch (Exception ex) {
             ex.printStackTrace();
@@ -215,8 +220,6 @@ public class AddressBook extends JFrame {
         public SaveAction()
         {
             putValue( NAME, "Save" );
-//            putValue( SMALL_ICON, new ImageIcon(
-            //                  getClass().getResource( "images/Save24.png" ) ) );
             putValue( SHORT_DESCRIPTION, "Save" );
             putValue( LONG_DESCRIPTION,
                     "Save an address book entry" );
@@ -247,8 +250,9 @@ public class AddressBook extends JFrame {
                             (personID == 0) ? "Insertion" : "Update";
 
                     // insert or update entry
-                    if (personID == 0)
-                        System.out.println(database.newPerson(person));
+                    if (personID == 0){
+                        System.out.printf("NEw Person");
+                        System.out.println(database.newPerson(person));}
                     else
                         System.out.println(database.savePerson(person));
 

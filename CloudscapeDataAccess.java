@@ -45,7 +45,7 @@ public class CloudscapeDataAccess
                         "zipcode, phoneID, phoneNumber, emailID, " +
                         "emailAddress " +
                         "FROM names, addresses, phoneNumbers, emailAddresses " +
-                        "WHERE lastName = ? AND " +
+                        "WHERE lastName = ?  AND " +
                         "names.personID = addresses.personID AND " +
                         "names.personID = phoneNumbers.personID AND " +
                         "names.personID = emailAddresses.personID" );
@@ -154,7 +154,7 @@ public class CloudscapeDataAccess
     {
         try {
             // set query parameter and execute query
-            sqlFind.setString( 1, lastName );
+            sqlFind.setString( 1, lastName);
             ResultSet resultSet = sqlFind.executeQuery();
 
             // if no records found, return immediately
@@ -166,6 +166,7 @@ public class CloudscapeDataAccess
             while (resultSet.next()) {
                 AddressBookEntry person = new AddressBookEntry();
                 // set AddressBookEntry properties
+                person.setPersonID(resultSet.getInt(1));
                 person.setFirstName(resultSet.getString(2));
                 person.setLastName(resultSet.getString(3));
 

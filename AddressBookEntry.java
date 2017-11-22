@@ -138,6 +138,12 @@ public class AddressBookEntry {
         return personID;
     }
 
+    // set person's ID
+    public int setPersonID(int id)
+    {
+        return personID = id;
+    }
+
     // set person's addressID
     public void setAddressID( int id )
     {
